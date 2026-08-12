@@ -1,3 +1,3 @@
-# Implementação de Danco de Dados
+# Implementação de Banco de Dados
 
-Repositório para os projetos e atividades práticas da disciplina de implementação de banco de dados.
+Este repositório foi criado para centralizar e organizar todos os projetos, laboratórios e atividades práticas desenvolvidos ao longo da disciplina de Implementação de Banco de Dados.
