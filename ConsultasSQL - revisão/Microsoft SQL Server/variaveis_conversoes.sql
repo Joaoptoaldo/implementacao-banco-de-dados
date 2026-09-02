@@ -47,3 +47,65 @@ PRINT 'Novo salario: ' + CAST(@novoSalario AS VARCHAR(10)) +
 GO
 
 -- Calculando a idade da Jennifer
+DECLARE @idadeJennifer INT;
+
+SELECT @idadeJennifer = DATEDIFF(YEAR, F.Datanasc, GETDATE())
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = 'Jennifer';
+
+PRINT 'Idade da Jennifer: ' + CAST(@idadeJennifer AS VARCHAR(3));
+
+GO
+
+-- OU
+DECLARE @anoAtual INT = YEAR(GETDATE())
+DECLARE @anoNascimento INT
+
+SELECT @anoNascimento = YEAR(F.Datanasc) 
+FROM FUNCIONARIO AS F 
+WHERE F.Pnome = 'Jennifer'
+
+PRINT 'Idade da Jennifer: ' + CAST((@anoAtual - @anoNascimento) AS VARCHAR(3))
+
+GO
+
+
+
+
+-- Conversão de dados
+
+
+-- CAST
+SELECT 'O funcionario '
+		+ Pnome 
+		+ ' tem o salario de: R$ '
+		+ CAST(Salario AS VARCHAR(10)) AS 'Nome + Salario'
+FROM FUNCIONARIO;
+
+GO
+
+
+-- CONVERT
+SELECT 'O funcionario '
+		+ Pnome 
+		+ ' tem o salario de: R$ '
+		+ CONVERT(VARCHAR(10), Salario) AS 'Nome + Salario'
+FROM FUNCIONARIO;
+
+GO
+
+
+-- converte a data de nascimento para padrão brasileiro: dd/mm/aaaa
+DECLARE @date DATE;
+
+SELECT @date = Datanasc
+FROM FUNCIONARIO 
+WHERE Pnome = 'Jennifer'
+
+PRINT 'Formato padrão:  ' + CAST(@date AS VARCHAR(10))
+PRINT 'Formato francês: ' + CONVERT(VARCHAR(10), @date, 103);
+
+GO
+
+
+
